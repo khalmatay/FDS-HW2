@@ -21,11 +21,10 @@ def fit(model, x : np.array, y : np.array, x_val:np.array = None, y_val:np.array
 
     for it in range(num_steps):
         ##############################
-        ###     START CODE HERE    ###
-        ##############################
-        
-        ##############################
-        ###      END CODE HERE     ###
+        preds = model.predict(x)
+        likelihood_history[it] = model.likelihood(preds, y)
+        gradient = model.compute_gradient(x, y, preds)
+        model.update_theta(gradient, lr)
         ##############################
         if x_val is not None and y_val is not None:
             val_preds = model.predict(x_val)

@@ -16,7 +16,7 @@ class LogisticRegression:
             preds: the predictions of the input features.
         """
         ##############################
-        ###     YOUR CODE HERE     ###
+        preds = sigmoid(np.dot(x, self.parameters))
         ##############################
         return preds
     
@@ -33,7 +33,7 @@ class LogisticRegression:
             log_l: the log likelihood of the model parameters according to data x and label y.
         """
         ##############################
-        ###     YOUR CODE HERE     ###
+        log_l = np.mean(y * np.log(preds) + (1 - y) * np.log(1 - preds))
         ##############################
         return log_l
     
@@ -49,7 +49,7 @@ class LogisticRegression:
             None
         """
         ##############################
-        ###     YOUR CODE HERE     ###
+        self.parameters += lr * gradient
         ##############################
         pass
         
@@ -67,7 +67,7 @@ class LogisticRegression:
             gradient: the gradient of the log likelihood.
         """
         ##############################
-        ###     YOUR CODE HERE     ###
+        gradient = np.dot(x.T, (y-preds) / len(y))
         ##############################
         return gradient
 
